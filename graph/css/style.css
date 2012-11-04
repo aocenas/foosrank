@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Source+Code+Pro:300);
+
+
+#label {
+ 
+  display: none;
+  position: absolute;
+  background: rgba(59,67,75,.7);
+}
+
+#graph {
+  width: 700px;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: rgb(59,67,75);
+  color: rgb(200,200,200);
+  /*rgb(100, 100, 100);*/
+}
+
+/*g.graph circle {*/
+  /*fill: rgb(23,86,154);*/
+  /*stroke: rgb(255,255,255);*/
+  /*r: 5;*/
+/*}*/
+/*g.graph circle:hover {*/
+  /*fill: rgb(87,52,13);*/
+  /*stroke: rgb(255,255,255);*/
+  /*r: 8;*/
+/*}*/
+
+.circleNormal {
+  fill: rgb(23,86,154);
+  stroke: rgb(255,255,255);
+}
+.circleHover {
+  fill: rgb(87,52,13);
+  stroke: rgb(255,255,255);
+}
+
+.buttons {
+  padding-top: 10px;
+}
+
+.rulex {
+  /*font-family: 'Source Code Pro', sans-serif;*/
+  font-size: 12px;
+  fill: rgb(255,255,255);
+}
+.ruley {
+  /*font-family: 'Source Code Pro', sans-serif;*/
+  font-size: 9px;
+  fill: rgb(255,255,255);
+}
+g.rulery line {
+  /*fill: rgb(255,255,255);*/
+  stroke: rgb(200,200,200);
+  stroke-width: 1;
+  /*shape-rendering: crispEdges;*/
+}
