@@ -1,0 +1,18 @@
+{
+  "name": "foosScraper",
+  "version": "0.0.1",
+  "description": "scraping fooball.sk for some ranking data",
+  "main": "main.js",
+  "dependencies": {
+    "jsdom": "~0.2.19",
+    "request": "~2.11.4",
+    "iconv-lite": "~0.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "andrej ocenas",
+  "license": "BSD"
+}
