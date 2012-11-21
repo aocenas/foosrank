@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .row
+    .span10
+      .hero-unit
+        h1 want to know where you stand?
+        p you can start by finding yourself in the graph below
+  .row
+    .span9
+      #graph
+    .span3.buttons
+      .row
+        .span3
+          a.btn#scaleBtn linear scale
+      .row
+        .span3
+          p search name
+          input#nameSearch(type='text')

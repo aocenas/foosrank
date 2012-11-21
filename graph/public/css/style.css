@@ -1,0 +1,93 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Source+Code+Pro:300);
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: rgb(238,238,238);
+  /*color: rgb(200,200,200);*/
+  /*rgb(100, 100, 100);*/
+}
+
+a.button:hover {
+  text-decoration: none;
+  color: rgb(223,236,246);
+}
+
+#label {
+  display: none;
+  position: absolute;
+  background: rgba(59,67,75,.7);
+}
+
+#graph {
+  width: 700px;
+}
+
+#main.container {
+  background-color: rgb(200,200,200);
+}
+
+.row.menu {
+  margin-left: 0px;
+}
+
+.nav-pills > li > a {
+  margin-top: 0px;
+  font-size: 24px;
+  /*height: 20px;*/
+  padding: 16px 12px 16px 12px;
+}
+
+/*ul.nav {*/
+  /*height: 50px;*/
+/*}*/
+
+/*ul.nav > li {*/
+  /*height: 50px;*/
+/*}*/
+
+.circleNormal {
+  fill: rgb(23,86,154);
+  stroke: rgb(51,51,51);
+}
+.circleHover {
+  fill: rgb(87,52,13);
+  stroke: rgb(51,51,51);
+}
+
+.buttons {
+  padding-top: 10px;
+}
+
+.rulex {
+  /*font-family: 'Source Code Pro', sans-serif;*/
+  font-size: 12px;
+  fill: rgb(51,51,51);
+}
+.ruley {
+  /*font-family: 'Source Code Pro', sans-serif;*/
+  font-size: 9px;
+  fill: rgb(51,51,51);
+}
+g.rulery line {
+  /*fill: rgb(255,255,255);*/
+  stroke: rgb(51,51,51);
+  stroke-width: 1;
+  /*shape-rendering: crispEdges;*/
+}
+
+.button {
+  min-width: 90px;
+  min-height: 32px;
+  height: 32px;
+  background-color:rgb(43,101,152);
+  display: inline-block; 
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: rgb(223,236,246);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(37,88,132);
+}

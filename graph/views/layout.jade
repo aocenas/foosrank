@@ -1,0 +1,26 @@
+
+doctype 5
+html
+  head
+    link(href='css/bootstrap.css', rel='stylesheet')
+    link(href='css/bootmetro.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
+  body
+    #main.container
+      .row.menu
+        ul.nav.nav-pills
+          - console.log(nav.home.class)
+          li(class=nav.home.class)
+            a(href='/') home
+          li(class=nav.find.class)
+            a(href='/find') find
+          li(class=nav.stats.class)
+            a(href='/stats') stats
+      block content
+    script(src='js/jquery.js')
+    script(src='js/EventEmitter.js')
+    script(src='js/bootstrap.js')
+    script(src='js/underscore.js')
+    script(src='js/d3.js')
+    script(src='js/graphRank.js')
+    script(src='js/app.js')
