@@ -1,3 +1,6 @@
+// Original Author: Ryan Heath
+// http://rpheath.com
+
 (function($) {
   $.searchbox = {}
   
@@ -30,7 +33,11 @@
       if (params) query_string = [params.replace('&amp;', '&'), query].join('&')
       
       $.get([base, '?', query_string].join(''), function(data) {
-        $($.searchbox.settings.dom_id).html(data)
+        if (typeof $.searchbox.settings.dom_id === 'function') {
+          $.searchbox.settings.dom_id(data);
+        } else {
+          $($.searchbox.settings.dom_id).html(data);
+        }
       })
     },
     
