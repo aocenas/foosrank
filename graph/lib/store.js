@@ -62,4 +62,17 @@ Store.prototype.findAll = function(collectionArg, callback) {
   });
 };
 
+Store.prototype.searchAll = function (collectionArg, query, cb) {
+  this.getCollection(collectionArg, function(err, collection) {
+    if (err) {
+      cb(err);
+    } else {
+      collection.find(query).toArray(function(err, results) {
+        cb(err, results);
+      });
+    }
+  });
+  
+}
+
 module.exports = exports = Store;
