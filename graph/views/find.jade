@@ -2,5 +2,11 @@ extends layout
 
 block content
   .row
-    .span12
-      p TODO some way to find people
+    .span12.paddingLeft20
+      h2 write a name into the search box
+      form
+        input#findBox.wideTextInput.centered(type='text', placeholder='who are you searching for...')
+  .row
+    .span12.paddingLeft20
+      #results
+
