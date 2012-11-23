@@ -13,7 +13,7 @@ a.button:hover {
 }
 
 #label {
-  display: none;
+  /*display: none;*/
   position: absolute;
   background: rgba(59,67,75,.7);
 }
@@ -23,7 +23,11 @@ a.button:hover {
 }
 
 #main.container {
-  background-color: rgb(200,200,200);
+  background-color: rgb(255,255,255);
+}
+
+.hero-unit {
+  background-color: rgb(251,251,251);
 }
 
 .row.menu {
@@ -61,16 +65,16 @@ a.button:hover {
 .rulex {
   /*font-family: 'Source Code Pro', sans-serif;*/
   font-size: 12px;
-  fill: rgb(51,51,51);
+  fill: rgb(15,15,15);
 }
 .ruley {
   /*font-family: 'Source Code Pro', sans-serif;*/
   font-size: 9px;
-  fill: rgb(51,51,51);
+  fill: rgb(15,15,15);
 }
 g.rulery line {
   /*fill: rgb(255,255,255);*/
-  stroke: rgb(51,51,51);
+  stroke: rgb(15,15,15);
   stroke-width: 1;
   /*shape-rendering: crispEdges;*/
 }
