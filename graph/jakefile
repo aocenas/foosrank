@@ -1,0 +1,25 @@
+var templatizer = require('templatizer');
+
+desc('Start the server.');
+task('start', function (params) {
+  jake.exec('node server.js > log 2>&1 &', function () {
+    console.log('started');
+    complete();
+  })
+});
+
+desc('generate client side template functions');
+task('templates', function () {
+  var templatesdir = __dirname + '/templates';
+  var templatesjs = templatesdir + '/templates.js';
+  var jsdir = __dirname + '/public/js/';
+  
+  console.log(templatesdir);
+  console.log(templatesjs);
+
+  templatizer(
+    templatesdir,
+    templatesjs
+  );
+  jake.cpR(templatesjs, jsdir);
+});
