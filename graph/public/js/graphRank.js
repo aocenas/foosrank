@@ -268,25 +268,35 @@ var graphs = (function (graphs){
     $label = $('#rankingGraphLabel');
   }
 
-  graphs.Rankings = function (container, dataArg) {
+  graphs.Rankings = function () {
     
     var graph = new EventEmitter();
     var actualScale = 'log';
-
-    setStage(container);
-    appendLabel(container);
     
-    if (typeof dataArg == 'string') {
-      d3.json(dataArg, function (json) {
-        data = json;
-        graph.emit('data.loaded');
+    graph.init = function (container, dataArg) {
+      function _init () {
+        setStage(container);
+        appendLabel(container);
         finalize(actualScale);
-      });
-    } else {
-      data = dataArg;
-      graph.emit('data.loaded');
-      finalize(actualScale);
-    }
+      };
+      if (typeof dataArg == 'string') {
+        d3.json(dataArg, function (json) {
+          if (json) {
+            data = json;
+            graph.emit('data.loaded');
+            _init();
+          } else {
+            graph.emit('data.error');
+          }
+        });
+      } else if (dataArg){
+        data = dataArg;
+        graph.emit('data.loaded');
+        _init();
+      } else {
+        throw 'graph.Ranking : dataArg not defined';
+      }
+    };
 
     graph.setScale = function (scaleType) {
       actualScale = scaleType;
