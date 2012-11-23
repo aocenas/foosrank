@@ -33,7 +33,10 @@ $(function () {
 
   $('#findBox').searchbox({
     url: '/api/data/search',
-    param: 'q'
+    param: 'q',
+    dom_id: function (data) {
+      $('#results').html(templatizer.findPlayer(data));
+    }
   });
 
 })
