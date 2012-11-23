@@ -1,9 +1,20 @@
+// native packages
 var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var http = require('http');
 
+// vendor packages
 var express = require('express');
+var queue = require('queue-async');
+
+// app packages
+var Store = require('./lib/store.js');
+
+// init
+
+var state = {};
+state.db = false;
 
 var app = express();
 
@@ -21,15 +32,48 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/data.json', function (req, res) {
-  fs.readFile('data.json', 'utf8', function (err, data) {
-    if (err) {
-      res.send(500, {error: err});
-    } else {
-      res.send(data);
-    }
-  });
+var store = new Store(null, null, 'foosrank', function (err) {
+  if (err) console.log('DB has error : ' + err);
+  else state.db = true;
 });
+
+app.get('/api/data', function (req, res) {
+  if (!state.db) {
+    res.send(500, {error: 'db has error'});
+  } else {
+    store.findAll('players', function (err, players) {
+      if (err) {
+        console.log('findAll has error : ' + err);
+        res.send(500, {error: err});
+      } else {
+        res.json({players: players});
+      }
+    });
+  }
+});
+
+app.get('/api/data/search', function (req, res) {
+  if (!state.db) {
+    res.send(500, {error: 'db has error'});
+  } else {
+    var query = {};
+    if (!isNaN(parseInt(req.query.q))){
+      query.rank = parseInt(req.query.q);
+    } else {
+      query.name = new RegExp('.*' + req.query.q + '.*', 'i');
+    }
+    console.log('api/data/search : ' + util.inspect(query));
+    store.searchAll('players', query, function (err, players) {
+      if (err) {
+        console.log('searchAll has error : ' + err);
+        res.send(500, {error: err});
+      } else {
+        res.json({players: players});
+      }
+    });
+  }
+});
+
 
 var nav = {
   home: {class: ''},
