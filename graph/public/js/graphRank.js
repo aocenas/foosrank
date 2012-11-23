@@ -4,8 +4,8 @@ var graphs = (function (graphs){
   var marginBottom = 50;
   var marginLeft = 50;
   var marginRight = 10;
-  var graphWidth = 640;
-  var graphHeight = 360;
+  var graphWidth = 540;
+  var graphHeight = 660;
   var realWidth = graphWidth + marginLeft + marginRight;
   var realHeight = graphHeight + marginTop + marginBottom;
   var scaleX = Math.round((graphWidth/realWidth) * 100) / 100;
@@ -216,7 +216,7 @@ var graphs = (function (graphs){
   }
 
   function unhoverCircle () {
-    $label.text('').hide();
+    //$label.text('').hide();
     d3.select(this)
       .attr('r', 5)
       .classed('circleHover', false)
@@ -263,8 +263,8 @@ var graphs = (function (graphs){
     render();
   }
 
-  function appendLabel () {
-    $('body').append('<div id="rankingGraphLabel"></div>');
+  function appendLabel (container) {
+    $(container).append('<div id="rankingGraphLabel"></div>').trigger('create');
     $label = $('#rankingGraphLabel');
   }
 
@@ -274,7 +274,7 @@ var graphs = (function (graphs){
     var actualScale = 'log';
 
     setStage(container);
-    appendLabel();
+    appendLabel(container);
     
     if (typeof dataArg == 'string') {
       d3.json(dataArg, function (json) {
