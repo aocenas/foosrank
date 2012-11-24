@@ -11,24 +11,36 @@ var defHost = 'localhost';
 var defPort = 27017;
 
 var Store = function (host, port, db, cb) {
-  //EventEmitter.call(this);
+  EventEmitter.call(this);
+
+  this.state = false;
+  this.errorCbCalled = false;
+
   if (!host) { host = defHost; }
   if (!port) { port = defPort; }
   
-  var self = this;
   var server = new Server(host, port, {auto_reconnect: true}, {});
   this.db = new Db(db, server, {safe: true});
+  
+  var self = this;
 
-  this.db.open(function (err) {
-    if (err) {
-      console.log(err);
-      cb(err);
-    } else {
-      self.emit('store.db.open');
-      console.log('new Store('+host+','+port+','+db+','+cb+') opened');
-      if (cb && typeof cb == 'function') cb();
-    }
-  });
+  (function openDb () {
+    self.db.open(function (err) {
+      if (err) {
+        console.log(err);
+        if (!self.errorCbCalled){
+          cb(err);
+          self.errorCbCalled = true;
+        }
+        setTimeout(openDb, 1000 * 30);
+      } else {
+        self.state = true;
+        self.emit('store.db.open');
+        console.log('new Store('+host+','+port+','+db+','+cb+') opened');
+        if (cb && typeof cb == 'function') cb();
+      }
+    });
+  })();
 };
 util.inherits(Store, EventEmitter);
 
