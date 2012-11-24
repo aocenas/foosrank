@@ -34,11 +34,10 @@ app.configure(function(){
 
 var store = new Store(null, null, 'foosrank', function (err) {
   if (err) console.log('DB has error : ' + err);
-  else state.db = true;
 });
 
 app.get('/api/data', function (req, res) {
-  if (!state.db) {
+  if (!store.state) {
     res.send(500, {error: 'db has error'});
   } else {
     store.findAll('players', function (err, players) {
@@ -53,7 +52,7 @@ app.get('/api/data', function (req, res) {
 });
 
 app.get('/api/data/search', function (req, res) {
-  if (!state.db) {
+  if (!store.state) {
     res.send(500, {error: 'db has error'});
   } else {
     var query = {};
